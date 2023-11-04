@@ -6,55 +6,57 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:56:11 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/04 16:51:50 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:44:35 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_members(t_gameinfo *info)
+void	set_images(t_graphics *graphics)
 {
-	info->map = NULL;
-	info->height = 0;
+	int	img_width;
+	int	img_height;
+
+	graphics->player = mlx_xpm_file_to_image(graphics->mlx,
+		"images/player.xpm", &img_width, &img_height);
+	graphics->wall = mlx_xpm_file_to_image(graphics->mlx,
+		"images/wall.xpm", &img_width, &img_height);
+	graphics->floor = mlx_xpm_file_to_image(graphics->mlx,
+		"images/floor.xpm", &img_width, &img_height);
+	graphics->exit = mlx_xpm_file_to_image(graphics->mlx,
+		"images/exit.xpm", &img_width, &img_height);
+	graphics->collec = mlx_xpm_file_to_image(graphics->mlx,
+		"images/item.xpm", &img_width, &img_height);
 }
 
-void	map_add_new_line(t_gameinfo *info, char *newline)
+void	struct_graphics(t_gameinfo *info)
 {
-	int		i;
-	char	**map_tmp;
+	int	i;
+	int	j;
 
-	i = 0;
-	info->height++;
-	map_tmp = (char **)malloc(sizeof(char *) * (info->height + 1));
-	map_tmp[info->height] = NULL;
-	while (i < info->height - 1)
+	i = -1;
+	while (++i < info->height)
 	{
-		map_tmp[i] = info->map[i];
-		i++;
+		j = -1;
+		while (info->map[i][++j])
+		{
+			if (info->map[i][j] == '0')
+				mlx_put_image_to_window(info->graphics.mlx, info->graphics.mlx_win, info->graphics.floor, j * 40, i * 40);
+			if (info->map[i][j] == '1')
+				mlx_put_image_to_window(info->graphics.mlx, info->graphics.mlx_win, info->graphics.wall, j * 40, i * 40);
+			if (info->map[i][j] == 'C')
+				mlx_put_image_to_window(info->graphics.mlx, info->graphics.mlx_win, info->graphics.collec, j * 40, i * 40);
+			if (info->map[i][j] == 'E')
+				mlx_put_image_to_window(info->graphics.mlx, info->graphics.mlx_win, info->graphics.exit, j * 40, i * 40);
+			if (info->map[i][j] == 'P')
+				mlx_put_image_to_window(info->graphics.mlx, info->graphics.mlx_win, info->graphics.player, j * 40, i * 40);
+		}
 	}
-	map_tmp[i] = newline;
-	free(info->map);
-	info->map = map_tmp;
 }
 
-void	struct_map(t_gameinfo *info, char *mapname)
+int	key_hook(int keycode, t_graphics *vars)
 {
-	int		fd;
-	char	*line;
-
-	check_filename(mapname);
-	fd = open(mapname, O_RDONLY);
-	if (fd < 0)
-		exit_with_message("Unable to open a given file.\n");
-	info->height = 0;
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		map_add_new_line(info, line);
-	}
-	close(fd);
+	
 }
 
 int	main(int argc, char **argv)
@@ -65,5 +67,11 @@ int	main(int argc, char **argv)
 		exit_with_message("The number of arguments is invalid\n");
 	init_members(&info);
 	struct_map(&info, argv[1]);
-	check_map(&info);
+	info.graphics.mlx = mlx_init();
+	info.graphics.mlx_win = mlx_new_window(info.graphics.mlx,
+		info.width * 40, info.height * 40, "so_long");
+	set_images(&info.graphics);
+	struct_graphics(&info);
+	mlx_key_hook(info.graphics.mlx_win, key_hook, &info.graphics);
+	mlx_loop(info.graphics.mlx);
 }

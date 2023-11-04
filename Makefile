@@ -6,7 +6,7 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 15:25:41 by knishiok          #+#    #+#              #
-#    Updated: 2023/11/04 16:43:11 by knishiok         ###   ########.fr        #
+#    Updated: 2023/11/04 17:52:23 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,10 @@ INC = -I includes
 NAME = so_long
 
 SRCS = srcs/main.c \
-	srcs/handle_error1.c \
-	srcs/handle_error2.c \
+	srcs/utils.c \
+	srcs/struct_map.c \
+	srcs/handle_map_error1.c \
+	srcs/handle_map_error2.c \
 
 LIB = libft/libft.a
 

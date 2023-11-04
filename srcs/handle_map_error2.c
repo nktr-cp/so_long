@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_error2.c                                    :+:      :+:    :+:   */
+/*   handle_map_error2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:42:34 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/04 17:33:01 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:12:03 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	exit_with_message(char *out)
-{
-	int	i;
-
-	i = 0;
-	write (STDERR_FILENO, "Error\n", 6);
-	while (out[i])
-		write (STDERR_FILENO, out + i++, 1);
-	exit(EXIT_FAILURE);
-}
 
 void	check_filename(char *filename)
 {
@@ -47,6 +36,7 @@ static void	dfs(int x, int y, bool **table, t_gameinfo *info)
 		dfs(x, y - 1, table, info);
 }
 
+// 到達はできるが、回収ができない時の対策をする
 void	check_reachable(t_gameinfo *info)
 {
 	int		i;
