@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:28:56 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/18 18:28:50 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/08 07:36:59 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (ret);
 }
 
-char	*ft_strchr(const char *s, int c)
-{
-	int		i;
+// char	*ft_strchr(const char *s, int c)
+// {
+// 	int		i;
 
-	i = 0;
-	while (s[i] && s[i] != (char)c)
-		i++;
-	if (s[i] == (char)c)
-		return ((char *)(s + i));
-	return (NULL);
-}
+// 	i = 0;
+// 	while (s[i] && s[i] != (char)c)
+// 		i++;
+// 	if (s[i] == (char)c)
+// 		return ((char *)(s + i));
+// 	return (NULL);
+// }

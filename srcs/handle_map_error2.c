@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:42:34 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/08 06:30:15 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/08 07:20:48 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_filename(char *filename)
 	while (filename[i] && filename[i] != '.')
 		i++;
 	if (ft_strcmp(filename + i, ".ber"))
-		exit_with_message("Given filename does not end with .ber.\n", true);
+		exit_with_message(FILENAME, true);
 }
 
 static void	dfs(int x, int y, bool **table, t_gameinfo *info)
@@ -42,10 +42,7 @@ void	check_reachable(t_gameinfo *info)
 	int		j;
 	bool	**table;
 
-	i = 0;
-	table = (bool **)ft_calloc(info->height, sizeof(bool *));
-	while (i < info->height)
-		table[i++] = (bool *)ft_calloc(info->width, sizeof(bool));
+	table = prepare_table(info->height, info->width);
 	i = -1;
 	while (++i < info->height)
 	{
@@ -59,7 +56,9 @@ void	check_reachable(t_gameinfo *info)
 	{
 		j = -1;
 		while (++j < info->width)
-			if ((info->map[i][j] == 'E' || info->map[i][j] == 'C') && !table[i][j])
-				exit_with_message("Unable to reach the goal.\n", true);
+			if ((info->map[i][j] == 'E' || info->map[i][j] == 'C')
+				&& !table[i][j])
+				exit_with_message(UNREACHABLE, true);
 	}
+	free_table(table, info->height);
 }

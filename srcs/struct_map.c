@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:50:21 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/08 06:31:25 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/08 07:30:06 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	struct_map(t_gameinfo *info, char *mapname)
 	check_filename(mapname);
 	fd = open(mapname, O_RDONLY);
 	if (fd < 0)
-		exit_with_message("Unable to open the given file.\n", true);
+		exit_with_message(CANT_OPEN, true);
 	info->height = 0;
 	while (1)
 	{

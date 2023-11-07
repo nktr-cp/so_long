@@ -6,12 +6,12 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 15:25:41 by knishiok          #+#    #+#              #
-#    Updated: 2023/11/04 17:52:23 by knishiok         ###   ########.fr        #
+#    Updated: 2023/11/08 08:00:17 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 INC = -I includes
 
@@ -20,6 +20,7 @@ NAME = so_long
 SRCS = srcs/main.c \
 	srcs/utils.c \
 	srcs/struct_map.c \
+	srcs/graphics.c \
 	srcs/handle_map_error1.c \
 	srcs/handle_map_error2.c \
 
@@ -50,6 +51,7 @@ clean:
 fclean: clean
 	$(RM) $(LIB)
 	$(RM) $(MLX)
+	$(RM) libmlx.dylib
 	$(RM) $(NAME)
 
 re: fclean all
