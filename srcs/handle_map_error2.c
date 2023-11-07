@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:42:34 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/04 20:12:03 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/08 06:30:15 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_filename(char *filename)
 	while (filename[i] && filename[i] != '.')
 		i++;
 	if (ft_strcmp(filename + i, ".ber"))
-		exit_with_message("Given filename does not end with .ber.\n");
+		exit_with_message("Given filename does not end with .ber.\n", true);
 }
 
 static void	dfs(int x, int y, bool **table, t_gameinfo *info)
@@ -36,7 +36,6 @@ static void	dfs(int x, int y, bool **table, t_gameinfo *info)
 		dfs(x, y - 1, table, info);
 }
 
-// 到達はできるが、回収ができない時の対策をする
 void	check_reachable(t_gameinfo *info)
 {
 	int		i;
@@ -60,7 +59,7 @@ void	check_reachable(t_gameinfo *info)
 	{
 		j = -1;
 		while (++j < info->width)
-			if (info->map[i][j] == 'E' && !table[i][j])
-				exit_with_message("Unable to reach a goal.\n");
+			if ((info->map[i][j] == 'E' || info->map[i][j] == 'C') && !table[i][j])
+				exit_with_message("Unable to reach the goal.\n", true);
 	}
 }

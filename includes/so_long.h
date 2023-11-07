@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 17:16:12 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/04 20:42:08 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/08 06:20:53 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdbool.h>
 # include <mlx.h>
 
+# define FINISH 53
 # define UP 13
 # define DOWN 1
 # define LEFT 0
@@ -43,6 +44,8 @@ typedef struct s_graphics
 	void	*wall;
 	void	*exit;
 	void	*collec;
+	int		player_x;
+	int		player_y;
 }	t_graphics;
 
 typedef struct s_gameinfo
@@ -50,12 +53,14 @@ typedef struct s_gameinfo
 	char		**map;
 	int			height;
 	int			width;
+	int			collect_rest;
+	int			steps;
 	t_graphics	graphics;
 }	t_gameinfo;
 
 void	struct_map(t_gameinfo *info, char *mapname);
 
-void	exit_with_message(char *out);
+void	exit_with_message(char *out, bool err);
 void	init_members(t_gameinfo *info);
 
 void	check_reachable(t_gameinfo *info);
