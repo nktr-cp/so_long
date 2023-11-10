@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:56:11 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/08 08:41:51 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:48:00 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	struct_map(&info, argv[1]);
 	info.graphics.mlx = mlx_init();
 	info.graphics.mlx_win = mlx_new_window(info.graphics.mlx,
-			info.width * 64, info.height * PIX, "so_long");
+			info.width * PIX, info.height * PIX, "so_long");
 	set_images(&info.graphics);
 	struct_graphics(&info);
 	mlx_key_hook(info.graphics.mlx_win, key_hook, &info);

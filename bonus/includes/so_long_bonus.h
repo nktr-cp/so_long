@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 17:16:12 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/08 08:43:26 by knishiok         ###   ########.fr       */
+/*   Created: 2023/11/10 18:31:23 by knishiok          #+#    #+#             */
+/*   Updated: 2023/11/10 20:38:59 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
-# include "../libft/libft.h"
-# include "../mlx/mlx.h"
+# include "../../libft/libft.h"
+# include "../../mlx/mlx.h"
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -22,7 +22,7 @@
 # include <stdbool.h>
 # include <mlx.h>
 
-# define PIX 40
+# define PIX 64
 
 # define FINISH 53
 # define UP 13
@@ -50,7 +50,10 @@ typedef struct s_graphics
 {
 	void	*mlx;
 	void	*mlx_win;
-	void	*player;
+	void	*player_up;
+	void	*player_down;
+	void	*player_right;
+	void	*player_left;
 	void	*floor;
 	void	*wall;
 	void	*exit;
@@ -72,7 +75,7 @@ typedef struct s_gameinfo
 void	struct_map(t_gameinfo *info, char *mapname);
 
 bool	do_move(t_gameinfo *vars, int x_diff, int y_diff);
-void	struct_graphics(t_gameinfo *info);
+void	struct_graphics(t_gameinfo *info, int keycode);
 void	set_images(t_graphics *graphics);
 
 void	exit_with_message(char *out, bool err);
