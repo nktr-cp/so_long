@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:49:11 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 13:36:14 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 13:52:04 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	exit_with_message(t_graphics *graphics, char *out, bool err)
 		write (STDERR_FILENO, "Error\n", 6);
 	while (out[i])
 		write (STDERR_FILENO, out + i++, 1);
-	(void)graphics;
-	// mlx_destroy_window(graphics->mlx, graphics->mlx_win);
+	if (graphics->mlx)
+		mlx_destroy_window(graphics->mlx, graphics->mlx_win);
 	exit(EXIT_FAILURE);
 }
 

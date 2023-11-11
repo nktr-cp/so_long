@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 07:25:42 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 12:31:58 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 13:48:40 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,18 @@ void	struct_graphics(t_gameinfo *info, int keycode)
 	print_steps(info);
 }
 
+static void	print_steps_stdout(t_gameinfo *info)
+{
+	char	*steps;
+
+	steps = ft_itoa(info->steps);
+	if (steps == NULL)
+		exit_with_message(&info->graphics, ALLOC_FAIL, true);
+	ft_printf("\r\x1b[33;01mSteps: ");
+	ft_putendl_fd(steps, STDOUT_FILENO);
+	free(steps);
+}
+
 static bool	choose_move(t_gameinfo *info, int x, int y)
 {
 	if (info->map[x][y] == '1')
@@ -129,6 +141,7 @@ static bool	choose_move(t_gameinfo *info, int x, int y)
 	}
 	if (info->map[x][y] == 'X')
 		exit_with_message(&info->graphics, LOSE, false);
+	print_steps_stdout(info);
 	return (true);
 }
 

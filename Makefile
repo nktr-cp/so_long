@@ -6,15 +6,14 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 15:25:41 by knishiok          #+#    #+#              #
-#    Updated: 2023/11/11 10:34:25 by knishiok         ###   ########.fr        #
+#    Updated: 2023/11/11 14:12:44 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 INC = -I mandatory/includes -I bonus/includes
-# BONUS_INC = -I bonus/includes
 
 NAME = so_long
 BONUS = so_long_bonus

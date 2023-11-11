@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:56:11 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 13:38:29 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:10:06 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ int	key_hook(int keycode, t_gameinfo *vars)
 	return (1);
 }
 
+int	close_win(t_graphics *graphics)
+{
+	if (graphics->mlx)
+		mlx_destroy_window(graphics->mlx, graphics->mlx_win);
+	exit(EXIT_SUCCESS);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_gameinfo	info;
@@ -47,6 +55,7 @@ int	main(int argc, char **argv)
 	if (info.graphics.num_enemy)
 		mlx_loop_hook(info.graphics.mlx, monster_hook, &info);
 	mlx_key_hook(info.graphics.mlx_win, key_hook, &info);
+	mlx_hook(info.graphics.mlx_win, 17, 0L, close_win, &info.graphics);
 	mlx_loop(info.graphics.mlx);
 }
 

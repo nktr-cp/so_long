@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 07:25:42 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/10 17:45:30 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:11:58 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	set_images(t_graphics *graphics)
 	int	img_height;
 
 	graphics->player = mlx_png_file_to_image(graphics->mlx,
-			"images/player.png", &img_width, &img_height);
+			"images/player_down.png", &img_width, &img_height);
 	graphics->wall = mlx_png_file_to_image(graphics->mlx,
 			"images/wall.png", &img_width, &img_height);
 	graphics->floor = mlx_png_file_to_image(graphics->mlx,

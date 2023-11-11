@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:56:11 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/10 17:48:00 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:11:30 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ int	key_hook(int keycode, t_gameinfo *vars)
 	return (1);
 }
 
+int	close_win(t_graphics *graphics)
+{
+	if (graphics->mlx)
+		mlx_destroy_window(graphics->mlx, graphics->mlx_win);
+	exit(EXIT_SUCCESS);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_gameinfo	info;
@@ -48,10 +56,6 @@ int	main(int argc, char **argv)
 	set_images(&info.graphics);
 	struct_graphics(&info);
 	mlx_key_hook(info.graphics.mlx_win, key_hook, &info);
+	mlx_hook(info.graphics.mlx_win, 17, 0L, close_win, &info.graphics);
 	mlx_loop(info.graphics.mlx);
 }
-
-// __attribute__((destructor))
-// static void destructor() {
-//     system("leaks -q so_long");
-// }
