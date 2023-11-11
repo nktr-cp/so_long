@@ -6,13 +6,13 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:42:34 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/08 07:20:48 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:29:18 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_filename(char *filename)
+void	check_filename(t_graphics *graphics, char *filename)
 {
 	int	i;
 
@@ -20,7 +20,7 @@ void	check_filename(char *filename)
 	while (filename[i] && filename[i] != '.')
 		i++;
 	if (ft_strcmp(filename + i, ".ber"))
-		exit_with_message(FILENAME, true);
+		exit_with_message(graphics, FILENAME, true);
 }
 
 static void	dfs(int x, int y, bool **table, t_gameinfo *info)
@@ -58,7 +58,7 @@ void	check_reachable(t_gameinfo *info)
 		while (++j < info->width)
 			if ((info->map[i][j] == 'E' || info->map[i][j] == 'C')
 				&& !table[i][j])
-				exit_with_message(UNREACHABLE, true);
+				exit_with_message(&info->graphics, UNREACHABLE, true);
 	}
 	free_table(table, info->height);
 }

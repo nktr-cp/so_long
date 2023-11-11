@@ -6,40 +6,11 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 07:25:42 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 13:48:40 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:36:16 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-void	set_images(t_graphics *graphics)
-{
-	int	img_width;
-	int	img_height;
-
-	graphics->player_up = mlx_png_file_to_image(graphics->mlx,
-			"images/player_up.png", &img_width, &img_height);
-	graphics->player_down = mlx_png_file_to_image(graphics->mlx,
-			"images/player_down.png", &img_width, &img_height);
-	graphics->player_right = mlx_png_file_to_image(graphics->mlx,
-			"images/player_right.png", &img_width, &img_height);
-	graphics->player_left = mlx_png_file_to_image(graphics->mlx,
-			"images/player_left.png", &img_width, &img_height);
-	graphics->enemy = mlx_png_file_to_image(graphics->mlx,
-			"images/enemy1.png", &img_width, &img_height);
-	graphics->enemy1 = mlx_png_file_to_image(graphics->mlx,
-			"images/enemy1.png", &img_width, &img_height);
-	graphics->enemy2 = mlx_png_file_to_image(graphics->mlx,
-			"images/enemy2.png", &img_width, &img_height);
-	graphics->wall = mlx_png_file_to_image(graphics->mlx,
-			"images/wall.png", &img_width, &img_height);
-	graphics->floor = mlx_png_file_to_image(graphics->mlx,
-			"images/floor.png", &img_width, &img_height);
-	graphics->exit = mlx_png_file_to_image(graphics->mlx,
-			"images/exit.png", &img_width, &img_height);
-	graphics->collec = mlx_png_file_to_image(graphics->mlx,
-			"images/item.png", &img_width, &img_height);
-}
 
 static void	put_image(t_gameinfo *info, void *image, int x, int y)
 {
@@ -52,20 +23,6 @@ static void	put_image(t_gameinfo *info, void *image, int x, int y)
 		info->graphics.player_x = x;
 		info->graphics.player_y = y;
 	}
-}
-
-void	print_steps(t_gameinfo *info)
-{
-	char	*steps;
-
-	steps = ft_itoa(info->steps);
-	if (steps == NULL)
-		exit_with_message(&info->graphics, ALLOC_FAIL, true);
-	mlx_string_put(info->graphics.mlx,
-		info->graphics.mlx_win, 30, 30, 0xFF0000, "STEPS:");
-	mlx_string_put(info->graphics.mlx,
-		info->graphics.mlx_win, 95, 30, 0xFFF000, steps);
-	free(steps);
 }
 
 void	put_image_player(t_gameinfo *info, int keycode, int x, int y)
@@ -110,18 +67,6 @@ void	struct_graphics(t_gameinfo *info, int keycode)
 		}
 	}
 	print_steps(info);
-}
-
-static void	print_steps_stdout(t_gameinfo *info)
-{
-	char	*steps;
-
-	steps = ft_itoa(info->steps);
-	if (steps == NULL)
-		exit_with_message(&info->graphics, ALLOC_FAIL, true);
-	ft_printf("\r\x1b[33;01mSteps: ");
-	ft_putendl_fd(steps, STDOUT_FILENO);
-	free(steps);
 }
 
 static bool	choose_move(t_gameinfo *info, int x, int y)

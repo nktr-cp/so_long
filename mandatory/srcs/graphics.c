@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 07:25:42 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 14:11:58 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:28:20 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static bool	choose_move(t_gameinfo *info, int x, int y)
 	{
 		if (info->collect_rest)
 			return (false);
-		exit_with_message("You win!\n", false);
+		exit_with_message(&info->graphics, "You win!\n", false);
 	}
 	if (info->map[x][y] == '0' || info->map[x][y] == 'C')
 	{

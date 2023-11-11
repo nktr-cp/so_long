@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:56:11 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 14:11:30 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:31:06 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	main(int argc, char **argv)
 {
 	t_gameinfo	info;
 
+	ft_bzero(&info, sizeof(t_gameinfo));
 	if (argc != 2)
-		exit_with_message(ARGS, true);
-	init_members(&info);
+		exit_with_message(&info.graphics, ARGS, true);
 	struct_map(&info, argv[1]);
 	info.graphics.mlx = mlx_init();
 	info.graphics.mlx_win = mlx_new_window(info.graphics.mlx,

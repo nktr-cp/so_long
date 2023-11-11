@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 17:16:12 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/10 18:32:05 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:30:44 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ bool	do_move(t_gameinfo *vars, int x_diff, int y_diff);
 void	struct_graphics(t_gameinfo *info);
 void	set_images(t_graphics *graphics);
 
-void	exit_with_message(char *out, bool err);
+void	exit_with_message(t_graphics *graphics, char *out, bool err);
 void	init_members(t_gameinfo *info);
 bool	**prepare_table(int height, int width);
 void	free_table(bool **table, int size);
 
 void	check_reachable(t_gameinfo *info);
-void	check_filename(char *filename);
+void	check_filename(t_graphics *graphics, char *filename);
 
 void	check_map(t_gameinfo *info);
 #endif

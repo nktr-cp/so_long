@@ -6,13 +6,13 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:49:11 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/08 07:21:29 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:27:01 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	exit_with_message(char *out, bool err)
+void	exit_with_message(t_graphics *graphics, char *out, bool err)
 {
 	int	i;
 
@@ -21,6 +21,8 @@ void	exit_with_message(char *out, bool err)
 		write (STDERR_FILENO, "Error\n", 6);
 	while (out[i])
 		write (STDERR_FILENO, out + i++, 1);
+	if (graphics->mlx)
+		mlx_destroy_window(graphics->mlx, graphics->mlx_win);
 	exit(EXIT_FAILURE);
 }
 

@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:31:23 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 11:43:17 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:37:16 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ typedef struct s_gameinfo
 }	t_gameinfo;
 
 void	struct_map(t_gameinfo *info, char *mapname);
+
+void	print_steps_stdout(t_gameinfo *info);
+void	print_steps(t_gameinfo *info);
+void	set_images(t_graphics *graphics);
 
 bool	do_move(t_gameinfo *vars, int x_diff, int y_diff);
 void	struct_graphics(t_gameinfo *info, int keycode);
