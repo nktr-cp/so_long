@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 21:46:51 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 12:42:27 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 15:14:44 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	random_move(t_gameinfo *info, int x, int y)
 	int	dir;
 
 	srand((unsigned int)time(NULL));
-	dir = rand() % 4;
+	dir = (rand() + x * x + 11 * y) % 4;
 	monster_move(info, x, y, 1 << dir);
 }
 

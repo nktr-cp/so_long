@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:31:23 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 14:37:16 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 14:58:10 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <mlx.h>
 # include <time.h>
 
-# define PIX 64
+# define PIX 63
 
 # define FINISH 53
 # define UP 13

@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 17:16:12 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 14:30:44 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 15:00:32 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdbool.h>
 # include <mlx.h>
 
-# define PIX 64
+# define PIX 63
 
 # define FINISH 53
 # define UP 13
