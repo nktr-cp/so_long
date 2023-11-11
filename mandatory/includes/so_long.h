@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 17:16:12 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 15:00:32 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 16:36:28 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define LEFT 0
 # define RIGHT 2
 
-# define LACK "Given map has insufficient number of components.\n"
+# define LACK "Given map has incorrect number of components.\n"
 # define SHAPE "Given map is not rectangular.\n"
 # define INVALID "Given map contains an invalid component.\n"
 # define INCOMPLETE "Given map is not surrounded by walls.\n"
