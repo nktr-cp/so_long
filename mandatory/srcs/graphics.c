@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 07:25:42 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 14:28:20 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 16:49:39 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	set_images(t_graphics *graphics)
 	int	img_height;
 
 	graphics->player = mlx_png_file_to_image(graphics->mlx,
-			"images/player_down.png", &img_width, &img_height);
+			"textures/player_down.png", &img_width, &img_height);
 	graphics->wall = mlx_png_file_to_image(graphics->mlx,
-			"images/wall.png", &img_width, &img_height);
+			"textures/wall.png", &img_width, &img_height);
 	graphics->floor = mlx_png_file_to_image(graphics->mlx,
-			"images/floor.png", &img_width, &img_height);
+			"textures/floor.png", &img_width, &img_height);
 	graphics->exit = mlx_png_file_to_image(graphics->mlx,
-			"images/exit.png", &img_width, &img_height);
+			"textures/exit.png", &img_width, &img_height);
 	graphics->collec = mlx_png_file_to_image(graphics->mlx,
-			"images/item.png", &img_width, &img_height);
+			"textures/item.png", &img_width, &img_height);
 }
 
 static void	put_image(t_gameinfo *info, void *image, int x, int y)

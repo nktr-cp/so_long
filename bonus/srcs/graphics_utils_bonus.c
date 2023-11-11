@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 14:35:10 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 15:52:40 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 16:49:13 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,25 @@ void	set_images(t_graphics *graphics)
 	int	img_height;
 
 	graphics->player_up = mlx_png_file_to_image(graphics->mlx,
-			"images/player_up.png", &img_width, &img_height);
+			"textures/player_up.png", &img_width, &img_height);
 	graphics->player_down = mlx_png_file_to_image(graphics->mlx,
-			"images/player_down.png", &img_width, &img_height);
+			"textures/player_down.png", &img_width, &img_height);
 	graphics->player_right = mlx_png_file_to_image(graphics->mlx,
-			"images/player_right.png", &img_width, &img_height);
+			"textures/player_right.png", &img_width, &img_height);
 	graphics->player_left = mlx_png_file_to_image(graphics->mlx,
-			"images/player_left.png", &img_width, &img_height);
+			"textures/player_left.png", &img_width, &img_height);
 	graphics->enemy = mlx_png_file_to_image(graphics->mlx,
-			"images/enemy1.png", &img_width, &img_height);
+			"textures/enemy1.png", &img_width, &img_height);
 	graphics->enemy1 = mlx_png_file_to_image(graphics->mlx,
-			"images/enemy1.png", &img_width, &img_height);
+			"textures/enemy1.png", &img_width, &img_height);
 	graphics->enemy2 = mlx_png_file_to_image(graphics->mlx,
-			"images/enemy2.png", &img_width, &img_height);
+			"textures/enemy2.png", &img_width, &img_height);
 	graphics->wall = mlx_png_file_to_image(graphics->mlx,
-			"images/wall.png", &img_width, &img_height);
+			"textures/wall.png", &img_width, &img_height);
 	graphics->floor = mlx_png_file_to_image(graphics->mlx,
-			"images/floor.png", &img_width, &img_height);
+			"textures/floor.png", &img_width, &img_height);
 	graphics->exit = mlx_png_file_to_image(graphics->mlx,
-			"images/exit.png", &img_width, &img_height);
+			"textures/exit.png", &img_width, &img_height);
 	graphics->collec = mlx_png_file_to_image(graphics->mlx,
-			"images/item.png", &img_width, &img_height);
+			"textures/item.png", &img_width, &img_height);
 }
