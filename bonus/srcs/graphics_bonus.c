@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 07:25:42 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/10 21:24:29 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 12:31:58 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	set_images(t_graphics *graphics)
 			"images/player_right.png", &img_width, &img_height);
 	graphics->player_left = mlx_png_file_to_image(graphics->mlx,
 			"images/player_left.png", &img_width, &img_height);
+	graphics->enemy = mlx_png_file_to_image(graphics->mlx,
+			"images/enemy1.png", &img_width, &img_height);
+	graphics->enemy1 = mlx_png_file_to_image(graphics->mlx,
+			"images/enemy1.png", &img_width, &img_height);
+	graphics->enemy2 = mlx_png_file_to_image(graphics->mlx,
+			"images/enemy2.png", &img_width, &img_height);
 	graphics->wall = mlx_png_file_to_image(graphics->mlx,
 			"images/wall.png", &img_width, &img_height);
 	graphics->floor = mlx_png_file_to_image(graphics->mlx,
@@ -54,14 +60,19 @@ void	print_steps(t_gameinfo *info)
 
 	steps = ft_itoa(info->steps);
 	if (steps == NULL)
-		exit_with_message("Memory allocatio failed.", true);
-	mlx_string_put(info->graphics.mlx, info->graphics.mlx_win, 30, 30, 0xFF0000, "STEPS:");
-	mlx_string_put(info->graphics.mlx, info->graphics.mlx_win, 95, 30, 0xFFF000, steps);
+		exit_with_message(&info->graphics, ALLOC_FAIL, true);
+	mlx_string_put(info->graphics.mlx,
+		info->graphics.mlx_win, 30, 30, 0xFF0000, "STEPS:");
+	mlx_string_put(info->graphics.mlx,
+		info->graphics.mlx_win, 95, 30, 0xFFF000, steps);
 	free(steps);
 }
 
 void	put_image_player(t_gameinfo *info, int keycode, int x, int y)
 {
+	if (keycode == -1)
+		keycode = info->graphics.player_state;
+	info->graphics.player_state = keycode;
 	if (keycode == UP)
 		put_image(info, info->graphics.player_up, x, y);
 	if (keycode == DOWN)
@@ -94,6 +105,8 @@ void	struct_graphics(t_gameinfo *info, int keycode)
 				put_image(info, info->graphics.exit, i, j);
 			if (info->map[i][j] == 'P')
 				put_image_player(info, keycode, i, j);
+			if (info->map[i][j] == 'X')
+				put_image(info, info->graphics.enemy, i, j);
 		}
 	}
 	print_steps(info);
@@ -107,13 +120,15 @@ static bool	choose_move(t_gameinfo *info, int x, int y)
 	{
 		if (info->collect_rest)
 			return (false);
-		exit_with_message("\x1b[32;01mYou win!\n", false);
+		exit_with_message(&info->graphics, WIN, false);
 	}
 	if (info->map[x][y] == '0' || info->map[x][y] == 'C')
 	{
 		info->map[x][y] = 'P';
 		info->steps++;
 	}
+	if (info->map[x][y] == 'X')
+		exit_with_message(&info->graphics, LOSE, false);
 	return (true);
 }
 

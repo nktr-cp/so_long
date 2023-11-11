@@ -6,7 +6,7 @@
 #    By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 15:25:41 by knishiok          #+#    #+#              #
-#    Updated: 2023/11/10 19:06:12 by knishiok         ###   ########.fr        #
+#    Updated: 2023/11/11 10:34:25 by knishiok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ BONUS_SRCS = bonus/srcs/main_bonus.c \
 	bonus/srcs/graphics_bonus.c \
 	bonus/srcs/handle_map_error1_bonus.c \
 	bonus/srcs/handle_map_error2_bonus.c \
+	bonus/srcs/enemy_bonus.c
 
 SRCS = mandatory/srcs/main.c \
 	mandatory/srcs/utils.c \

@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:42:22 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/10 19:03:05 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 11:08:50 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	is_rectangular(t_gameinfo *info)
 		while (info->map[i][len] && info->map[i][len] != '\n')
 			len++;
 		if (len != w)
-			exit_with_message(SHAPE, true);
+			exit_with_message(&info->graphics, SHAPE, true);
 		i++;
 	}
 	info->width = w;
@@ -38,9 +38,11 @@ static void	check_components(t_gameinfo *info, t_components *comps,
 		int x, int y)
 {
 	if (info->map[x][y] != '0' && info->map[x][y] != '1' &&
-		info->map[x][y] != 'C' &&
+		info->map[x][y] != 'C' && info->map[x][y] != 'X' &&
 		info->map[x][y] != 'E' && info->map[x][y] != 'P')
-		exit_with_message(INVALID, true);
+		exit_with_message(&info->graphics, INVALID, true);
+	if (info->map[x][y] == 'X')
+		info->graphics.num_enemy++;
 	if (info->map[x][y] == 'C')
 		comps->collective_cmp++;
 	if (info->map[x][y] == 'E')
@@ -67,7 +69,7 @@ static void	has_appropriate_number_of_components(t_gameinfo *info)
 		i++;
 	}
 	if (!comps.collective_cmp || !comps.exit_cmp || !comps.start_cmp)
-		exit_with_message(LACK, true);
+		exit_with_message(&info->graphics, LACK, true);
 }
 
 static void	surrounded_by_walls(t_gameinfo *info)
@@ -78,22 +80,22 @@ static void	surrounded_by_walls(t_gameinfo *info)
 	while (info->map[i] && info->map[i][0] == '1')
 		i++;
 	if (i != info->height)
-		exit_with_message(INCOMPLETE, true);
+		exit_with_message(&info->graphics, INCOMPLETE, true);
 	i = 0;
 	while (info->map[i] && info->map[i][info->width - 1] == '1')
 		i++;
 	if (i != info->height)
-		exit_with_message(INCOMPLETE, true);
+		exit_with_message(&info->graphics, INCOMPLETE, true);
 	i = 0;
 	while (info->map[0][i] == '1')
 		i++;
 	if (i != info->width)
-		exit_with_message(INCOMPLETE, true);
+		exit_with_message(&info->graphics, INCOMPLETE, true);
 	i = 0;
 	while (info->map[info->height - 1][i] == '1')
 		i++;
 	if (i != info->width)
-		exit_with_message(INCOMPLETE, true);
+		exit_with_message(&info->graphics, INCOMPLETE, true);
 }
 
 void	check_map(t_gameinfo *info)
