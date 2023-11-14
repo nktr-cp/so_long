@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:42:22 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 19:44:20 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:25:42 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static void	surrounded_by_walls(t_gameinfo *info)
 
 void	check_map(t_gameinfo *info)
 {
-	if (info->height > 100)
+	if (info->height > 50)
 		exit_with_message(info, TOOLARGE, true);
 	if (info->map == NULL)
 		exit_with_message(info, LACK, true);

@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:49:11 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 19:11:49 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:55:45 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ void	exit_with_message(t_gameinfo *info, char *out, bool err)
 		write (STDERR_FILENO, "Error\n", 6);
 	while (out[i])
 		write (STDERR_FILENO, out + i++, 1);
-	i = -1;
-	while (++i < info->height)
-		free(info->map[i]);
-	free(info->map);
+	if (info->map)
+	{
+		i = -1;
+		while (++i < info->height)
+			free(info->map[i]);
+		free(info->map);
+	}
 	if (info->graphics.mlx)
 		mlx_destroy_window(info->graphics.mlx, info->graphics.mlx_win);
 	exit(EXIT_FAILURE);
