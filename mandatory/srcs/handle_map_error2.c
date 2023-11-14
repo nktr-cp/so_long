@@ -6,13 +6,13 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:42:34 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 14:29:18 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 19:29:11 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	check_filename(t_graphics *graphics, char *filename)
+void	check_filename(t_gameinfo *info, char *filename)
 {
 	int	i;
 
@@ -20,7 +20,7 @@ void	check_filename(t_graphics *graphics, char *filename)
 	while (filename[i] && filename[i] != '.')
 		i++;
 	if (ft_strcmp(filename + i, ".ber"))
-		exit_with_message(graphics, FILENAME, true);
+		exit_with_message(info, FILENAME, true);
 }
 
 static void	dfs(int x, int y, bool **table, t_gameinfo *info)
@@ -46,9 +46,9 @@ void	check_reachable(t_gameinfo *info)
 	i = -1;
 	while (++i < info->height)
 	{
-		j = 0;
-		while (j < info->width)
-			if (info->map[i][j++] == 'P')
+		j = -1;
+		while (++j < info->width)
+			if (info->map[i][j] == 'P')
 				dfs(i, j, table, info);
 	}
 	i = -1;
@@ -58,7 +58,7 @@ void	check_reachable(t_gameinfo *info)
 		while (++j < info->width)
 			if ((info->map[i][j] == 'E' || info->map[i][j] == 'C')
 				&& !table[i][j])
-				exit_with_message(&info->graphics, UNREACHABLE, true);
+				exit_with_message(info, UNREACHABLE, true);
 	}
 	free_table(table, info->height);
 }

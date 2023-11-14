@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 14:35:10 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 16:49:13 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 19:12:49 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_steps_stdout(t_gameinfo *info)
 
 	steps = ft_itoa(info->steps);
 	if (steps == NULL)
-		exit_with_message(&info->graphics, ALLOC_FAIL, true);
+		exit_with_message(info, ALLOC_FAIL, true);
 	ft_printf("\r\x1b[33;01mSteps: ");
 	ft_putendl_fd(steps, STDOUT_FILENO);
 	free(steps);
@@ -30,7 +30,7 @@ void	print_steps(t_gameinfo *info)
 
 	steps = ft_itoa(info->steps);
 	if (steps == NULL)
-		exit_with_message(&info->graphics, ALLOC_FAIL, true);
+		exit_with_message(info, ALLOC_FAIL, true);
 	mlx_string_put(info->graphics.mlx,
 		info->graphics.mlx_win, 30, 30, 0xFF0000, "STEPS:");
 	mlx_string_put(info->graphics.mlx,

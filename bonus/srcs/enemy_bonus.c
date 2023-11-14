@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 21:46:51 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 15:14:44 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:52:17 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ int	monster_hook(t_gameinfo *info)
 		j = -1;
 		while (info->map[i][++j])
 		{
-			if (info->map[i][j] == 'X' && info->actions % 100 == 0)
+			if (info->map[i][j] == 'X' && info->actions % 10 == 0)
 				random_move(info, i, j);
 		}
 	}
-	if (info->actions % 70 == 0)
+	if (info->actions % 7 == 0)
 		info->graphics.enemy = info->graphics.enemy2;
-	else if (info->actions % 40 == 0)
+	else if (info->actions % 4 == 0)
 		info->graphics.enemy = info->graphics.enemy1;
 	struct_graphics(info, -1);
 	info->actions++;

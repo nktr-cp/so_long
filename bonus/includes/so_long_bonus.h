@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:31:23 by knishiok          #+#    #+#             */
-/*   Updated: 2023/11/11 14:58:10 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/11 19:22:47 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 # define ALLOC_FAIL "[31;01mMemory allocation failed.\n"
 # define WIN "\x1b[32;01m✌️ You win!\n"
 # define LOSE "\x1b[31;01m😭You lose...\n"
+# define TOOLARGE "Given map is too large\n"
 
 typedef struct s_components
 {
@@ -92,7 +93,7 @@ bool	do_move(t_gameinfo *vars, int x_diff, int y_diff);
 void	struct_graphics(t_gameinfo *info, int keycode);
 void	set_images(t_graphics *graphics);
 
-void	exit_with_message(t_graphics *graphics, char *out, bool err);
+void	exit_with_message(t_gameinfo *info, char *out, bool err);
 void	init_members(t_gameinfo *info);
 bool	**prepare_table(int height, int width);
 void	free_table(bool **table, int size);
