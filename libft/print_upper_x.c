@@ -6,7 +6,7 @@
 /*   By: knishiok <knishiok@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 06:59:43 by knishiok          #+#    #+#             */
-/*   Updated: 2023/10/18 18:28:50 by knishiok         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:49:42 by knishiok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,10 @@ void	printf_x_upper(t_format info, unsigned int n, int *len)
 {
 	char	fill;
 	char	putsign;
-	int		print_len;
 
 	if (info.flags.sharp && n)
 		info.width -= 2;
 	get_puthchrs(info, n, &fill, &putsign);
-	print_len = ft_max(info.precision + (putsign == '+') + (n < 0),
-			get_printhlen(info, n));
 	if (!info.flags.left_align)
 	{
 		if (fill == '0' && putsign != 'z')
