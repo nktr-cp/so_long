@@ -89,4 +89,4 @@ login:
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		$(IMAGE_NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re login build
