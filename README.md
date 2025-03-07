@@ -21,7 +21,7 @@ Darwin nktr 22.6.0 Darwin Kernel Version 22.6.0: Wed Oct  4 21:25:40 PDT 2023; r
 - XQuartZが連携してくれない。
   - XQuartZの設定から、「ネットワーク・クライアントからの接続を許可」にチェックをいれる
   - 毎回ビルドするのは面倒なので、`xclock`で確かめるのがよかった
-  - shellを起動し直す時は、`xhost`コマンドから接続許可するようにg
+  - shellを起動し直す時は、`xhost`コマンドから接続許可するように
   - 例: `IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'); xhost + $IP`
 
 - キーが効かない
