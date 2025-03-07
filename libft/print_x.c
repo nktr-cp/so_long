@@ -17,7 +17,7 @@ int	get_printhlen(t_format info, unsigned int n)
 	int	res;
 
 	res = 0;
-	if (n < 0 || info.flags.sign)
+	if (info.flags.sign)
 		res++;
 	res += digit_count(n, 16);
 	return (res);
@@ -33,9 +33,9 @@ static void	ft_putxnbr(t_format *info, unsigned int n, int *len, char putsign)
 	print_len = get_printhlen(*info, n);
 	if (info->flags.sharp && n)
 		*len += ft_putstr("0x");
-	if (info->precision + (n < 0) > print_len - (putsign == '+'))
+	if (info->precision > print_len - (putsign == '+'))
 	{
-		while (--info->precision + (n < 0) >= print_len - (putsign == '+'))
+		while (--info->precision >= print_len - (putsign == '+'))
 		{
 			(*len) += ft_putchar('0');
 			info->width--;
@@ -56,9 +56,7 @@ void	get_puthchrs(t_format info,
 		&& !(n == 0 && info.precision == 0))
 		*fill = '0';
 	*putsign = 'z';
-	if (n < 0)
-		*putsign = '-';
-	else if (info.flags.sign)
+	if (info.flags.sign)
 		*putsign = '+';
 	else if (info.flags.space)
 		*putsign = ' ';
@@ -72,7 +70,7 @@ int	process_hgap(t_format *info, char putsign, unsigned int n, char fill)
 	if (info->flags.left_align)
 		cmp = get_printhlen(*info, n);
 	else
-		cmp = ft_max(info->precision + (putsign == '+') + (n < 0),
+		cmp = ft_max(info->precision + (putsign == '+'),
 				get_printhlen(*info, n));
 	res = 0;
 	if (info->width > 0 && n == 0 && info->precision == 0)

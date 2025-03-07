@@ -76,4 +76,17 @@ fclean: clean
 
 re: fclean all
 
+IMAGE_NAME = so_long_env
+build:
+	docker build -t $(IMAGE_NAME) .
+
+# this part highly depends on your architecture
+IP = $(shell ipconfig getifaddr en0)
+login:
+	xhost + $(IP)
+	docker run -it \
+		-e DISPLAY=$(IP):0 \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		$(IMAGE_NAME)
+
 .PHONY: all clean fclean re

@@ -18,6 +18,7 @@
 # include <limits.h>
 # include <stdarg.h>
 # include <stdbool.h>
+# include <stdint.h>
 
 # define LOWER_HEX "0123456789abcdef"
 # define UPPER_HEX "0123456789ABCDEF"

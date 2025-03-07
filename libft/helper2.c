@@ -12,22 +12,6 @@
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src)
-{
-	int		i;
-	char	*new_str;
-
-	new_str = (char *)malloc(sizeof(char) * ft_strlen(src) + 1);
-	if (new_str)
-	{
-		i = 0;
-		while (*src)
-			new_str[i++] = *src++;
-		new_str[i] = '\0';
-	}
-	return (new_str);
-}
-
 static unsigned long	unsigned_digit_count(unsigned long value, int base_size)
 {
 	int	digit;

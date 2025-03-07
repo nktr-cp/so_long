@@ -30,7 +30,7 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	total_size;
 
 	if (detect_overflow(count, size))
-		return (malloc(SIZE_MAX));
+		return (malloc(LLONG_MAX));
 	if (count == 0 || size == 0)
 	{
 		count = 1;

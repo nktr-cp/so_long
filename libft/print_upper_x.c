@@ -23,9 +23,9 @@ static void	ft_putxnbr_upper(t_format *info, unsigned int n,
 	print_len = get_printhlen(*info, n);
 	if (info->flags.sharp && n)
 		*len += ft_putstr("0X");
-	if (info->precision + (n < 0) > print_len - (putsign == '+'))
+	if (info->precision > print_len - (putsign == '+'))
 	{
-		while (--info->precision + (n < 0) >= print_len - (putsign == '+'))
+		while (--info->precision >= print_len - (putsign == '+'))
 		{
 			(*len) += ft_putchar('0');
 			info->width--;
