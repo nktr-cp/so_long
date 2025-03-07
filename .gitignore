@@ -1,0 +1,17 @@
+so_long
+**/*.o
+libft/libft.a
+libmlx.dylib
+mlx/libmlx.dylib
+mlx/mlx_image.abi.json
+mlx/mlx_image.swiftdoc
+mlx/mlx_image.swiftmodule
+mlx/mlx_image.swiftsourceinfo
+mlx/mlx_init.abi.json
+mlx/mlx_init.swiftdoc
+mlx/mlx_init.swiftmodule
+mlx/mlx_init.swiftsourceinfo
+mlx/mlx_window.abi.json
+mlx/mlx_window.swiftdoc
+mlx/mlx_window.swiftmodule
+mlx/mlx_window.swiftsourceinfo
